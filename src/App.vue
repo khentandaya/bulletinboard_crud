@@ -33,8 +33,6 @@ const deleteArticle = (id) => {
 
 //edit_info
 const editArticle = (id) => {
-  //toggle_edit = "true";
-
   console.log(article_arr.value[getItemID(id)]);
   console.log(getItemID(id));
 };
@@ -49,18 +47,16 @@ const getItemID = (itemID) => {
 </script>
 
 <template>
-  <h1>sample</h1>
+  <button type="button" v-on:click="toggle = true">Create new article</button>
 
-  <button type="button" v-on:click="toggle = !toggle">Create new article</button>
-
-  <div class="article" v-if="toggle">
+  <div class="article" v-show="toggle">
     inside article
-    <form @submit.prevent="handleSubmit()">
+    <form @submit.prevent="handleSubmit()" v-on:submit="toggle = false">
       <label for="title"> Article Title</label>
-      <input aria-label="Article Title" type="text" v-model="title" />
+      <input aria-label="Article Title" type="text" v-model="title" required />
 
       <label for="content"> Article content</label>
-      <input aria-label="Article Content" type="text" v-model="content" />
+      <input aria-label="Article Content" type="text" v-model="content" required />
 
       <button type="submit">submit</button>
     </form>
@@ -70,22 +66,28 @@ const getItemID = (itemID) => {
       <tr v-for="article in article_arr" :key="article.id">
         <td>Article:{{ article.title }} Content:{{ article.content }}</td>
         <td>
-          <button type="button" @click="deleteArticle(article.id)">delete</button>
-        </td>
-        <td>
           <button
             type="button"
-            @click="editArticle(article.id), (toggle_edit = !toggle_edit)"
+            @click="editArticle(article.id)"
+            v-on:click="toggle_edit = true"
           >
             edit
           </button>
         </td>
+        <td>
+          <button type="button" @click="deleteArticle(article.id)">delete</button>
+        </td>
       </tr>
     </table>
   </div>
-  <div class="edit-container" v-if="toggle_edit">
-    <input aria-label="Title" placeholder="edit title" type="text" />
-    <input aria-label="Content" placeholder="edit content" type="text" />
+  <div class="edit-container" v-show="toggle_edit">
+    <input aria-label="Title" placeholder="edit title" type="text" v-model="uptitle" />
+    <input
+      aria-label="Content"
+      placeholder="edit content"
+      type="text"
+      v-model="upcontent"
+    />
 
     <button type="button" @click="updateArticle()">update</button>
   </div>
