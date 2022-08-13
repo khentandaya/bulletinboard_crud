@@ -33,7 +33,7 @@ const deleteArticle = (id) => {
 
 //edit_info
 const editArticle = (id) => {
-  //toggle_edit = "true";
+  toggle_edit = "true";
 
   console.log(article_arr.value[getItemID(id)]);
   console.log(getItemID(id));
