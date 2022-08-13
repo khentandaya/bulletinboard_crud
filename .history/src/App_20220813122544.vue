@@ -44,7 +44,7 @@ const editArticle = (itemID) => {
 //update_info
 const updateArticle = () => {};
 
-const getItemID = (itemID) => {article_arr.value.map((item) => item.id).indexOf(itemID);}
+const getItemID = () => {article_arr.value.map((item) => item.id).indexOf(itemID);}
 </script>
 
 <template>

@@ -8,7 +8,7 @@ const article_arr = ref([]);
 const title = ref("");
 const content = ref("");
 
-let i =
+let i = article_arr.value.map((item) => item.id).indexOf(itemID);
 
 //post_info
 const handleSubmit = () => {
@@ -30,21 +30,23 @@ const handleSubmit = () => {
 
 //delete_info
 const deleteArticle = (itemID) => {
+  let i = article_arr.value.map((item) => item.id).indexOf(itemID);
   article_arr.value.splice(i, 1);
 };
 
 //edit_info
 const editArticle = (itemID) => {
   toggle_edit = "true";
+  let i = article_arr.value.map((item) => item.id).indexOf(itemID);
 
   console.log(article_arr.value[i]);
   console.log(i);
 };
 
 //update_info
-const updateArticle = () => {};
-
-const getItemID = (itemID) => {article_arr.value.map((item) => item.id).indexOf(itemID);}
+const updateArticle = () => {
+  let i = article_arr.value.map((item) => item.id).indexOf(itemID);
+};
 </script>
 
 <template>

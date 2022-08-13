@@ -8,7 +8,7 @@ const article_arr = ref([]);
 const title = ref("");
 const content = ref("");
 
-let i =
+let i = article_arr.value.map((item) => item.id).indexOf(itemID);
 
 //post_info
 const handleSubmit = () => {
@@ -43,8 +43,6 @@ const editArticle = (itemID) => {
 
 //update_info
 const updateArticle = () => {};
-
-const getItemID = (itemID) => {article_arr.value.map((item) => item.id).indexOf(itemID);}
 </script>
 
 <template>

@@ -8,8 +8,6 @@ const article_arr = ref([]);
 const title = ref("");
 const content = ref("");
 
-let i =
-
 //post_info
 const handleSubmit = () => {
   article_arr.value = [
@@ -30,12 +28,14 @@ const handleSubmit = () => {
 
 //delete_info
 const deleteArticle = (itemID) => {
+  let i = article_arr.value.map((item) => item.id).indexOf(itemID);
   article_arr.value.splice(i, 1);
 };
 
 //edit_info
 const editArticle = (itemID) => {
   toggle_edit = "true";
+  let i = article_arr.value.map((item) => item.id).indexOf(itemID);
 
   console.log(article_arr.value[i]);
   console.log(i);
@@ -43,8 +43,6 @@ const editArticle = (itemID) => {
 
 //update_info
 const updateArticle = () => {};
-
-const getItemID = (itemID) => {article_arr.value.map((item) => item.id).indexOf(itemID);}
 </script>
 
 <template>
@@ -84,7 +82,7 @@ const getItemID = (itemID) => {article_arr.value.map((item) => item.id).indexOf(
   </div>
   <div class="edit-container" v-if="toggle_edit">
     <input aria-label="Title" placeholder="edit title" type="text" />
-    <input aria-label="Content" placeholder="edit content" type="text" />
+    <input aria-label="Content" placeholder="{{edit content" type="text" />
 
     <button type="button" @click="updateArticle()">update</button>
   </div>
