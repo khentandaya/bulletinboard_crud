@@ -27,18 +27,18 @@ const handleSubmit = () => {
 };
 
 //delete_info
-const deleteArticle = (id) => {
-  article_arr.value.splice(getItemID(id), 1);
-};
+const deleteArticle = (id) => article_arr.value.splice(getItemID(id), 1);
 
 //edit_info
 const editArticle = (id) => {
   console.log(article_arr.value[getItemID(id)]);
   console.log(getItemID(id));
+
+  updateArticle(id);
 };
 
 //update_info
-const updateArticle = () => {};
+const updateArticle = (id) => {};
 
 const getItemID = (itemID) => {
   let i = article_arr.value.map((item) => item.id).indexOf(itemID);
